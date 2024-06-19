@@ -116,7 +116,7 @@ function Header() {
               </button>
             )}
           </li>
-          <li>
+          {/* <li>
             <a
               href="https://www.creoengine.com/"
               className="header-link"
@@ -170,7 +170,7 @@ function Header() {
             >
               Launchpad
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </header>
