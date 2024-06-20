@@ -751,7 +751,10 @@ function Home() {
 									</a>
 								</div>
 							</div> */}
-              <div className="mt-8 px-80" />
+              {/* <div className="mt-8 home-intro-text ">
+                Legacy $CREO staking and farming pools are closed. The new pools
+                are open with Seed Staking Boosters. You can deposit now.
+              </div> */}
             </div>
             <div className="home-staking-box">
               <div className="head-box">

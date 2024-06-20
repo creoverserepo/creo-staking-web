@@ -377,7 +377,7 @@ main {
 	-moz-appearance: none;
 }
 .home-staking-box .body-box {
-	width: 520px;
+	/* width: 520px; */
 	height: 620px;
 	max-width: 100%;
 	padding: 2rem;
