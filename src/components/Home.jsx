@@ -700,7 +700,7 @@ function Home() {
         <div className="custom-container mx-auto">
           <div className="w-full lg:flex lg:justify-between lg:items-center lg:gap-8">
             <div className="home-intro-box">
-              <h1 className="home-intro-title">
+              <h1 className="home-intro-title text-center lg:text-left">
                 <span className="pr-2">
                   Stake <span className="txt-primary">$CREO</span> &
                   <br />
@@ -709,7 +709,7 @@ function Home() {
                 </span>
                 {/* <span className="txt-primary">$CREO</span> */}
               </h1>
-              <div className="py-8 px-4 lg:px-0">
+              <div className="flex py-8 px-4 lg:px-0 justify-center lg:justify-start">
                 <button
                   className="btn-primary"
                   onClick={() => setOpenExchange(true)}
