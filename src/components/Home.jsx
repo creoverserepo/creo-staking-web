@@ -161,7 +161,7 @@ const StakeView = () => {
                 onClick={() => setStakePeriod(key)}
               >
                 <div>{val.lockPeriodInDays + " Days"}</div>
-                <div className="apr-info">
+                <div className="apr-info lg:right-0 right-[-10px]">
                   <div className="value">{Number(val?.apy_d2) / 100 + "%"}</div>
                   <div className="label">apr</div>
                 </div>
