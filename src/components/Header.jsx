@@ -29,7 +29,7 @@ function Header() {
   return (
     <header>
       <div className="flex flex-wrap items-center justify-between">
-        <a href="/">
+        <a href="https://www.creoplay.app/">
           <img
             src={logo}
             className="header-logo mr-16"
