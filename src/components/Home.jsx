@@ -751,7 +751,7 @@ function Home() {
 									</a>
 								</div>
 							</div> */}
-              <div className="mt-8 px-80"></div>
+              <div className="mt-8 px-80" />
             </div>
             <div className="home-staking-box">
               <div className="head-box">
