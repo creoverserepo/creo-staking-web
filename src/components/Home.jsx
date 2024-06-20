@@ -702,13 +702,12 @@ function Home() {
             <div className="home-intro-box">
               <h1 className="home-intro-title">
                 <span className="pr-2">
-                  Earn & secure a guaranteed
+                  Stake <span className="txt-primary">$CREO</span> &
                   <br />
-                  Launchpad allocation by
+                  Earn up to 18% APY
                   <br />
-                  staking
                 </span>
-                <span className="txt-primary">$CREO</span>
+                {/* <span className="txt-primary">$CREO</span> */}
               </h1>
               <div className="py-8 px-4 lg:px-0">
                 <button
@@ -752,10 +751,10 @@ function Home() {
 									</a>
 								</div>
 							</div> */}
-              <div className="mt-8 home-intro-text">
+              {/* <div className="mt-8 home-intro-text">
                 Legacy $CREO staking and farming pools are closed. The new pools
                 are open with Seed Staking Boosters. You can deposit now.
-              </div>
+              </div> */}
             </div>
             <div className="home-staking-box">
               <div className="head-box">
