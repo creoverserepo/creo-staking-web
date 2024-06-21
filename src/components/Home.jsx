@@ -168,7 +168,7 @@ const StakeView = () => {
                 <div>{val.lockPeriodInDays + " Days"}</div>
                 <div className="apr-info lg:right-0 right-[-10px]">
                   <div className="value">{Number(val?.apy_d2) / 100 + "%"}</div>
-                  <div className="label">apr</div>
+                  <div className="label">apy</div>
                 </div>
               </button>
             )
@@ -229,7 +229,7 @@ const StakeView = () => {
           </div>
           <div className="stat-box grid grid-cols-3">
             <div className="stat">
-              <div className="label">APR Rate</div>
+              <div className="label">APY Rate</div>
               <div className="value">
                 {stakeOptions[stakePeriod]?.apy_d2
                   ? Number(stakeOptions[stakePeriod]?.apy_d2) / 100 + "%"
