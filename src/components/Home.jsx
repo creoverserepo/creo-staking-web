@@ -848,17 +848,17 @@ function Home() {
                   </div>
                   <div className="info flex justify-between items-center">
                     <div className="label">Max Supply</div>
-                    <div className="value">1B CREO</div>
+                    <div className="value">{item.max_supply}</div>
                   </div>
                   <div className="info flex justify-between items-center">
                     <div className="label">Circulating Supply</div>
-                    <div className="value">2</div>
+                    <div className="value">{item.circulating_supply}</div>
                   </div>
                   <div className="info flex justify-between items-center">
                     <div className="label">
                       Percentage CREO staked by circulating supply
                     </div>
-                    <div className="value">{item.circulating_supply}</div>
+                    <div className="value">29%</div>
                   </div>
                       </>
                     )
