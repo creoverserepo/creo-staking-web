@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
+import axios from "axios";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { Chart, ArcElement } from "chart.js";
 import { Pie } from "react-chartjs-2";
@@ -36,10 +37,12 @@ import exUniswap from "../assets/exchange/ex-uniswap.svg";
 Chart.register(ArcElement);
 
 const StakeView = () => {
+  
   const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
   const [txLoading, setTxLoading] = useState(false);
   const [txHash, setTxHash] = useState("");
+ 
   // eslint-disable-next-line no-unused-vars
   const [minCREOV, setMinCREOV] = useState(0);
   const [minStake, setMinStake] = useState(0);
@@ -129,6 +132,8 @@ const StakeView = () => {
     }
   }, [stakeOptions, stakePeriod, stakeAmount]);
 
+
+  // console.log('post',post)
   return (
     <div className="body-box">
       <div className="chain-box grid grid-cols-3 gap-4">
@@ -549,7 +554,9 @@ const PastStaking = () => {
 };
 
 function Home() {
+  const baseURL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=creo-engine";
   const chartBackground = ["#26C0F8", "#5398FF"];
+  const [post, setPost] = useState(null);
   const [openExchange, setOpenExchange] = useState(false);
   const [chartLabel, setChartLabel] = useState("");
   const [chartData, setChartData] = useState("");
@@ -604,6 +611,12 @@ function Home() {
       setTotalPending(totalTokenPending);
     })();
   }, []);
+  useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPost(response.data);
+    });
+  }, []);
+  console.log('post2',post)
 
   return (
     <main>
@@ -806,7 +819,10 @@ function Home() {
               <div className="left-box">
                 <div className="title">Statistic</div>
                 <div className="info-box">
-                  <div className="info flex justify-between items-center">
+                  {post?.map((item)=>{
+                    return (
+                      <>
+                      <div className="info flex justify-between items-center">
                     <div className="label">Total Value Locked</div>
                     <div className="value">
                       {totalValueLocked && tokenPrice
@@ -828,7 +844,7 @@ function Home() {
                   </div>
                   <div className="info flex justify-between items-center">
                     <div className="label">Total Supply</div>
-                    <div className="value">1B CREO</div>
+                    <div className="value">{item.total_supply}</div>
                   </div>
                   <div className="info flex justify-between items-center">
                     <div className="label">Max Supply</div>
@@ -836,14 +852,17 @@ function Home() {
                   </div>
                   <div className="info flex justify-between items-center">
                     <div className="label">Circulating Supply</div>
-                    <div className="value">290M CREO</div>
+                    <div className="value">2</div>
                   </div>
                   <div className="info flex justify-between items-center">
                     <div className="label">
                       Percentage CREO staked by circulating supply
                     </div>
-                    <div className="value">29%</div>
+                    <div className="value">{item.circulating_supply}</div>
                   </div>
+                      </>
+                    )
+                  })}
                 </div>
               </div>
               <div className="right-box">
