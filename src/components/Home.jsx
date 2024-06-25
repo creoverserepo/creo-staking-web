@@ -190,11 +190,11 @@ const StakeView = () => {
           </div>
         </div>
         <div className="info flex items-center justify-between">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <div>Allowance</div>
-            <button className="edit" onClick={approveSpender}>
+            <div className="edit" onClick={approveSpender}>
               (Edit)
-            </button>
+            </div>
             <img src={iconInfo} />
           </div>
           <div>
