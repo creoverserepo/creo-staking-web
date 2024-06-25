@@ -37,12 +37,11 @@ import exUniswap from "../assets/exchange/ex-uniswap.svg";
 Chart.register(ArcElement);
 
 const StakeView = () => {
-  
   const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
   const [txLoading, setTxLoading] = useState(false);
   const [txHash, setTxHash] = useState("");
- 
+
   // eslint-disable-next-line no-unused-vars
   const [minCREOV, setMinCREOV] = useState(0);
   const [minStake, setMinStake] = useState(0);
@@ -132,7 +131,6 @@ const StakeView = () => {
     }
   }, [stakeOptions, stakePeriod, stakeAmount]);
 
-
   // console.log('post',post)
   return (
     <div className="body-box">
@@ -194,7 +192,11 @@ const StakeView = () => {
         <div className="info flex items-center justify-between">
           <div className="flex items-center">
             <div>Allowance</div>
-            <div className="edit" onClick={approveSpender}>
+            <div
+              className="edit"
+              onClick={approveSpender}
+              style={{ marginLeft: "5px" }}
+            >
               (Edit)
             </div>
             <img src={iconInfo} />
@@ -554,7 +556,8 @@ const PastStaking = () => {
 };
 
 function Home() {
-  const baseURL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=creo-engine";
+  const baseURL =
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=creo-engine";
   const chartBackground = ["#26C0F8", "#5398FF"];
   const [post, setPost] = useState(null);
   const [openExchange, setOpenExchange] = useState(false);
@@ -616,7 +619,7 @@ function Home() {
       setPost(response.data);
     });
   }, []);
-  console.log('post2',post)
+  console.log("post2", post);
 
   return (
     <main>
@@ -819,49 +822,49 @@ function Home() {
               <div className="left-box">
                 <div className="title">Statistic</div>
                 <div className="info-box">
-                  {post?.map((item)=>{
+                  {post?.map((item) => {
                     return (
                       <>
-                      <div className="info flex justify-between items-center">
-                    <div className="label">Total Value Locked</div>
-                    <div className="value">
-                      {totalValueLocked && tokenPrice
-                        ? "$" +
-                          numFormat(
-                            totalValueLocked * tokenPrice * 1,
-                            18
-                          ).toFixed(2)
-                        : "..."}
-                    </div>
-                  </div>
-                  <div className="info flex justify-between items-center">
-                    <div className="label">Total Staked</div>
-                    <div className="value">
-                      {totalStaked
-                        ? lblFormat(totalStaked, 18, " CREO")
-                        : "..."}
-                    </div>
-                  </div>
-                  <div className="info flex justify-between items-center">
-                    <div className="label">Total Supply</div>
-                    <div className="value">{item.total_supply}</div>
-                  </div>
-                  <div className="info flex justify-between items-center">
-                    <div className="label">Max Supply</div>
-                    <div className="value">{item.max_supply}</div>
-                  </div>
-                  <div className="info flex justify-between items-center">
-                    <div className="label">Circulating Supply</div>
-                    <div className="value">{item.circulating_supply}</div>
-                  </div>
-                  <div className="info flex justify-between items-center">
-                    <div className="label">
-                      Percentage CREO staked by circulating supply
-                    </div>
-                    <div className="value">29%</div>
-                  </div>
+                        <div className="info flex justify-between items-center">
+                          <div className="label">Total Value Locked</div>
+                          <div className="value">
+                            {totalValueLocked && tokenPrice
+                              ? "$" +
+                                numFormat(
+                                  totalValueLocked * tokenPrice * 1,
+                                  18
+                                ).toFixed(2)
+                              : "..."}
+                          </div>
+                        </div>
+                        <div className="info flex justify-between items-center">
+                          <div className="label">Total Staked</div>
+                          <div className="value">
+                            {totalStaked
+                              ? lblFormat(totalStaked, 18, " CREO")
+                              : "..."}
+                          </div>
+                        </div>
+                        <div className="info flex justify-between items-center">
+                          <div className="label">Total Supply</div>
+                          <div className="value">{item.total_supply}</div>
+                        </div>
+                        <div className="info flex justify-between items-center">
+                          <div className="label">Max Supply</div>
+                          <div className="value">{item.max_supply}</div>
+                        </div>
+                        <div className="info flex justify-between items-center">
+                          <div className="label">Circulating Supply</div>
+                          <div className="value">{item.circulating_supply}</div>
+                        </div>
+                        <div className="info flex justify-between items-center">
+                          <div className="label">
+                            Percentage CREO staked by circulating supply
+                          </div>
+                          <div className="value">29%</div>
+                        </div>
                       </>
-                    )
+                    );
                   })}
                 </div>
               </div>
