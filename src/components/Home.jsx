@@ -192,13 +192,13 @@ const StakeView = () => {
         <div className="info flex items-center justify-between">
           <div className="flex items-center">
             <div>Allowance</div>
-            <div
+            <button
               className="edit"
               onClick={approveSpender}
-              style={{ marginLeft: "5px" }}
+              style={{ marginLeft: "5px " }}
             >
               (Edit)
-            </div>
+            </button>
             <img src={iconInfo} />
           </div>
           <div>
