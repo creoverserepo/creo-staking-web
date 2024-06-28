@@ -615,7 +615,6 @@ function Home() {
       setPost(response.data);
     });
   }, []);
-  console.log("post2", post);
 
   return (
     <main>
@@ -847,7 +846,9 @@ function Home() {
                         </div>
                         <div className="info flex justify-between items-center">
                           <div className="label">Max Supply</div>
-                          <div className="value">{item.max_supply}</div>
+                          <div className="value">
+                            {lblFormat(item.max_supply)}
+                          </div>
                         </div>
                         <div className="info flex justify-between items-center">
                           <div className="label">Circulating Supply</div>
@@ -855,9 +856,21 @@ function Home() {
                         </div>
                         <div className="info flex justify-between items-center">
                           <div className="label">
-                            Percentage CREO staked by circulating supply
+                            Percentage CREO staked by total supply
                           </div>
-                          <div className="value">29%</div>
+                          <div className="value">
+                            {/* {(totalStaked / item.max_supply) * 100} */}
+                            {/* {(totalStaked / item.max_supply) * 100 + "%"} */}
+                            {/* {lblFormat((totalStaked, 18) / item.max_supply) *
+                              100} */}
+                            {lblFormat(
+                              ((totalStaked / item.max_supply) * 100).toFixed(
+                                5
+                              ),
+                              19,
+                              "%"
+                            )}
+                          </div>
                         </div>
                       </>
                     );
