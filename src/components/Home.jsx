@@ -10,7 +10,6 @@ import {
   formatNumber,
   maturityDate,
   nowTime,
-  numFormat,
 } from "../helpers/TextHelper";
 import staking from "../helpers/StakingHelper";
 import Loading from "./Loading";
@@ -818,18 +817,16 @@ function Home() {
               <div className="left-box">
                 <div className="title">Statistic</div>
                 <div className="info-box">
-                  {post?.map((item) => {
+                  {post?.map((item, index) => {
                     return (
-                      <>
+                      <div key={index}>
                         <div className="info flex justify-between items-center">
                           <div className="label">Total Value Locked</div>
                           <div className="value">
                             {totalValueLocked && tokenPrice
                               ? "$" +
-                                numFormat(
-                                  totalValueLocked * tokenPrice * 1,
-                                  18
-                                ).toFixed(2)
+                              formatNumber(
+                                (totalValueLocked * tokenPrice * 1) / Math.pow(10, 18))
                               : "..."}
                           </div>
                         </div>
@@ -837,7 +834,7 @@ function Home() {
                           <div className="label">Total Staked</div>
                           <div className="value">
                             {totalStaked
-                              ? lblFormat(totalStaked, 18, " CREO")
+                              ? formatNumber(totalStaked / Math.pow(10, 18), 2, " CREO")
                               : "..."}
                           </div>
                         </div>
@@ -853,7 +850,7 @@ function Home() {
                         </div>
                         <div className="info flex justify-between items-center">
                           <div className="label">Circulating Supply</div>
-                          <div className="value">{formatNumber(item.circulating_supply, 2)}</div>
+                          <div className="value">{lblFormat(item.circulating_supply)}</div>
                         </div>
                         <div className="info flex justify-between items-center">
                           <div className="label">
@@ -873,7 +870,7 @@ function Home() {
                             )}
                           </div>
                         </div>
-                      </>
+                      </div>
                     );
                   })}
                 </div>
@@ -887,12 +884,12 @@ function Home() {
                   <div className="stat-left-box text-center">
                     <div className="token">
                       {totalStaked
-                        ? lblFormat(totalStaked, 18, " CREO")
+                        ? formatNumber(totalStaked / Math.pow(10, 18), 2, " CREO")
                         : "..."}
                     </div>
                     <div className="value">
                       {totalStaked && tokenPrice
-                        ? "~$" + lblFormat(totalStaked * tokenPrice, 18, "")
+                        ? "~$" + formatNumber((totalStaked * tokenPrice) / Math.pow(10, 18))
                         : "..."}
                     </div>
                     <div className="label">Total $CREO Staked</div>
@@ -900,12 +897,12 @@ function Home() {
                   <div className="stat-middle-box text-center">
                     <div className="token">
                       {totalReward
-                        ? lblFormat(totalReward, 18, " CREO")
+                        ? formatNumber(totalReward / Math.pow(10, 18), 2, " CREO")
                         : "..."}
                     </div>
                     <div className="value">
                       {totalReward && tokenPrice
-                        ? "~$" + lblFormat(totalReward * tokenPrice, 18, "")
+                        ? "~$" + formatNumber((totalReward * tokenPrice) / Math.pow(10, 18))
                         : "..."}
                     </div>
                     <div className="label">Total Pool Rewards</div>
@@ -913,12 +910,12 @@ function Home() {
                   <div className="stat-right-box text-center">
                     <div className="token">
                       {totalPending
-                        ? lblFormat(totalPending, 18, " CREO")
+                        ? formatNumber(totalPending / Math.pow(10, 18), 2, " CREO")
                         : "..."}
                     </div>
                     <div className="value">
                       {totalPending && tokenPrice
-                        ? "~$" + lblFormat(totalPending * tokenPrice, 18, "")
+                        ? "~$" + formatNumber((totalPending * tokenPrice) / Math.pow(10, 18))
                         : "..."}
                     </div>
                     <div className="label">Total Pending Rewards</div>
@@ -956,7 +953,7 @@ function Home() {
                                 {"- " +
                                   chartLabel[key] +
                                   " = " +
-                                  lblFormat(chartData[key], 18, " CREO")}
+                                  formatNumber(chartData[key] / Math.pow(10, 18), 2, " CREO")}
                               </div>
                             );
                           })}
