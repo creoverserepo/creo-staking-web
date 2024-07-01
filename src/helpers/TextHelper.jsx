@@ -33,3 +33,13 @@ export const maturityDate = (days) => {
 	const futureDateStr = currentDate.toLocaleDateString("en-US", options);
 	return futureDateStr;
 };
+
+export const formatNumber = (amount, decimalPlace = 2, symbol = "") => {
+	if (Number(amount) === 0) return "0";
+	let index = String(amount).indexOf(".");
+	if (index === -1) amount = Number(amount).toFixed(2);
+	let roundAmount = amount.toString().replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+	let rindex = roundAmount.indexOf(".");
+	let hasDecimal = decimalPlace !== 0 ? 1 : 0;
+	return roundAmount.slice(0, rindex + hasDecimal + decimalPlace) + symbol;
+};

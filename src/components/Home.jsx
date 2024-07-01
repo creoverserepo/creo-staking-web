@@ -7,6 +7,7 @@ import { Pie } from "react-chartjs-2";
 import {
   epochFormat,
   lblFormat,
+  formatNumber,
   maturityDate,
   nowTime,
   numFormat,
@@ -842,7 +843,7 @@ function Home() {
                         </div>
                         <div className="info flex justify-between items-center">
                           <div className="label">Total Supply</div>
-                          <div className="value">{item.total_supply}</div>
+                          <div className="value">{formatNumber(item.total_supply, 2)}</div>
                         </div>
                         <div className="info flex justify-between items-center">
                           <div className="label">Max Supply</div>
@@ -852,7 +853,7 @@ function Home() {
                         </div>
                         <div className="info flex justify-between items-center">
                           <div className="label">Circulating Supply</div>
-                          <div className="value">{item.circulating_supply}</div>
+                          <div className="value">{formatNumber(item.circulating_supply, 2)}</div>
                         </div>
                         <div className="info flex justify-between items-center">
                           <div className="label">
