@@ -15,7 +15,7 @@ import staking from "../helpers/StakingHelper";
 import Loading from "./Loading";
 import gradientLeft from "../assets/gradient-left.png";
 import gradientRight from "../assets/gradient-right.png";
-import iconInfo from "../assets/info.svg";
+// import iconInfo from "../assets/info.svg";
 import chBinance from "../assets/network/i-binance.svg";
 import chEthereum from "../assets/network/i-ethereum.svg";
 import chArbitrum from "../assets/network/i-arbitrum.svg";
@@ -189,7 +189,7 @@ const StakeView = () => {
             {userBalance ? lblFormat(userBalance, 18, " $CREO") : "..."}
           </div>
         </div>
-        <div className="info flex items-center justify-between">
+        {/* <div className="info flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div>Allowance</div>
             <div className="edit" onClick={approveSpender}>
@@ -200,7 +200,7 @@ const StakeView = () => {
           <div>
             {userAllowance ? lblFormat(userAllowance, 18, " $CREO") : "..."}
           </div>
-        </div>
+        </div> */}
       </div>
       {txLoading && (
         <div className="my-2">
@@ -256,21 +256,21 @@ const StakeView = () => {
               Connect Your Wallet
             </button>
           )}
-          {address &&
+          {/* {address &&
             userAllowance < stakeAmount * Math.pow(10, 18) &&
             stakeAmount * Math.pow(10, 18) >= minStake && (
               <p className="my-4 text-lg text-center font-bold">
                 Increase the allowance amount or to adjust the input to match
                 the allowance amount
               </p>
-            )}
+            )} */}
           {address && stakeAmount * Math.pow(10, 18) < minStake && (
             <p className="my-4 text-lg text-center font-bold">
               Minimum stake amount is{" "}
               {minStake ? lblFormat(minStake, 18, " $CREO") : ".."}
             </p>
           )}
-          {address && (
+          {address && userAllowance >= userBalance ? (
             <button
               className="stake-token"
               onClick={submitStake}
@@ -283,6 +283,10 @@ const StakeView = () => {
               }
             >
               Stake
+            </button>
+          ) : (
+            <button className="stake-token" onClick={approveSpender}>
+              Approve
             </button>
           )}
         </>
