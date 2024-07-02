@@ -270,24 +270,30 @@ const StakeView = () => {
               {minStake ? lblFormat(minStake, 18, " $CREO") : ".."}
             </p>
           )}
-          {address && userAllowance >= userBalance ? (
-            <button
-              className="stake-token"
-              onClick={submitStake}
-              disabled={
-                !(
-                  address &&
-                  userAllowance >= stakeAmount * Math.pow(10, 18) &&
-                  stakeAmount * Math.pow(10, 18) >= minStake
+          {address && (
+            <>
+              {
+                userAllowance >= userBalance ? (
+                  <button
+                    className="stake-token"
+                    onClick={submitStake}
+                    disabled={
+                      !(
+                        address &&
+                        userAllowance >= stakeAmount * Math.pow(10, 18) &&
+                        stakeAmount * Math.pow(10, 18) >= minStake
+                      )
+                    }
+                  >
+                    Stake
+                  </button>
+                ) : (
+                  <button className="stake-token" onClick={approveSpender}>
+                    Approve
+                  </button>
                 )
               }
-            >
-              Stake
-            </button>
-          ) : (
-            <button className="stake-token" onClick={approveSpender}>
-              Approve
-            </button>
+            </>
           )}
         </>
       )}
