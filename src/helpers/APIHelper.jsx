@@ -5,7 +5,6 @@ const headerToken = "0x9521728bF66a867BC65A93Ece4a543D817871Eb7";
 const header = {
   headers: { "X-CREO-TOKEN": headerToken },
 };
-
 const getStatistics = async () => {
   const { data } = await axios.get(baseUrl + "statistic", header);
   return data;
